@@ -1,0 +1,93 @@
+.nav-bar {
+  position: relative;
+  z-index: 20;
+  .nav-bar__list {
+    display: flex;
+    position: fixed;
+    width: 100%;
+    left: 0;
+    bottom: 0;
+    background-color: #fff;
+    @media only screen and (device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3) {
+      padding-bottom: 10px; /*no*/
+    }
+    div,
+    a {
+      flex: 1;
+      height: 100px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #666;
+      position: relative;
+      .icon {
+        width: 45px;
+        height: 45px;
+        margin-bottom: 9px;
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-size: contain;
+      }
+      .c-icon {
+        background-image: url(../assets/images/nav/ccenter-icon.svg);
+      }
+      .w-icon {
+        background-image: url(../assets/images/nav/wshop-icon.svg);
+      }
+      .i-icon {
+        background-image: url(../assets/images/nav/icenter-icon.svg);
+      }
+      .m-icon {
+        background-image: url(../assets/images/nav/mcenter-icon.svg);
+      }
+      &.router-link-active {
+        .w-icon {
+          background-image: url(../assets/images/nav/wshop-icon-active.svg);
+        }
+        .w-icon + span {
+          color: #ff7731;
+        }
+      }
+      &.router-link-exact-active {
+        color: #ff7731;
+        .c-icon {
+          background-image: url(../assets/images/nav/ccenter-icon-active.svg);
+        }
+        .w-icon {
+          background-image: url(../assets/images/nav/wshop-icon-active.svg);
+        }
+        .i-icon {
+          background-image: url(../assets/images/nav/icenter-icon-active.svg);
+        }
+        .m-icon {
+          background-image: url(../assets/images/nav/mcenter-icon-active.svg);
+        }
+      }
+      .i-nav {
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translate3d(-50%, -35%, 0);
+        width: 85px;
+        height: 85px;
+        border-radius: 50%;
+        background: linear-gradient(to bottom, #ff7731, #fd9a2b);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        i {
+          width: 45px;
+          height: 45px;
+          background: url(../assets/images/nav/index-icon.svg) center center
+            no-repeat;
+          background-size: contain;
+        }
+      }
+    }
+  }
+}

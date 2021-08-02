@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 45 40.46">
+    <defs>
+        <style>
+            .cls-1,.cls-3{fill:none;stroke:#fff;stroke-miterlimit:10;stroke-width:2px;}.cls-1{stroke-linecap:round;}.cls-2{fill:#b3b3b3;}
+        </style>
+    </defs>
+    <title>
+        资源 24
+    </title>
+    <g id="图层_2" data-name="图层 2">
+        <g id="图层_1-2" data-name="图层 1">
+            <path d="M1,21.71,21.16,1.56a1.9,1.9,0,0,1,2.69,0L44,21.71" class="cls-1"/>
+            <path d="M40.42,19.12V33.35a6.11,6.11,0,0,1-6.11,6.11H10.69a6.11,6.11,0,0,1-6.11-6.11V19.12" class="cls-1"/>
+            <circle cx="15.05" cy="24.28" r="2.39" class="cls-2" transform="translate(-11.53 34.77) rotate(-79.75)"/>
+            <circle cx="30.94" cy="24.28" r="2.39" class="cls-2" transform="translate(1.54 50.41) rotate(-79.75)"/>
+            <path d="M31.38,22.79a8.41,8.41,0,1,1-16.83,0" class="cls-3"/>
+        </g>
+    </g>
+</svg>

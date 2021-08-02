@@ -1,0 +1,73 @@
+pipeline:
+  restore-cache: #加载缓存node_modules
+    image: drillster/drone-volume-cache
+    restore: true
+    mount:
+      - ./node_modules
+    volumes:
+      - /tmp/cache:/cache
+    when:
+      event: [ push, pull_request ] #触发事件类型【push】，【pull_request】
+      branch: [ master, release, dev ] #触发分支
+      
+  #install
+  install:
+    image: node:14.17.3 #docker image node:13.14.0-alpine3.10
+    commands: #命令
+      - rm -rf package-lock.json #删除文件
+      - yarn install #也可以使用 npm install
+    when:
+      event: [ push, pull_request ]
+      branch: [ master, release, dev ]
+
+  rebuild-cache: # 更新node_modules缓存
+    image: drillster/drone-volume-cache
+    rebuild: true
+    mount:
+      - ./node_modules
+    volumes:
+      - /tmp/cache:/cache
+    when:
+      event: [ push, pull_request ]
+      branch: [ master, release, dev ]
+  
+  build: #build
+    image: node:14.17.3
+    commands:
+      - CI=false yarn run build
+      - ls
+    when:
+      event: [ push, pull_request ]
+      branch: [ master, release, dev ]
+  
+  # 发布，UAT环境，使用scp传输文件夹
+  # deploy-uat:
+  #   image: appleboy/drone-scp
+  #   host:
+  #     from_secret: UAT_IP # 来源 drone secret，关键信息隐藏
+  #   port: 22
+  #   username: root
+  #   password:
+  #     from_secret: UAT_PWD
+  #   target: /home/www/admin-uat.iguo.tech  #目标文件夹
+  #   source: build # 当前目录build文件夹
+  #   rm: true
+  #   when:
+  #     event: [ push, pull_request ]
+  #     branch: [ release ]
+      
+  # # 发布，prod环境
+  # deploy-prod:
+  #   image: appleboy/drone-scp
+  #   host:
+  #     from_secret: UAT_IP
+  #   port: 22
+  #   username: root
+  #   password:
+  #     from_secret: UAT_PWD
+  #   target: /home/www/admin.iguo.tech
+  #   source: build
+  #   rm: true
+  #   when:
+  #     event: [ push, pull_request ]
+  #     branch: [ master ]
